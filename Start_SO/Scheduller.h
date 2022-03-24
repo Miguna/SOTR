@@ -1,5 +1,17 @@
+#ifndef SCHEDULLER_H_
+#define SCHEDULLER_H_
+
 #include "AppTypes.h"
+#include "Task.h"
+
+#define SCHEDULLER_OK			0
+#define	SCHEDULLER_ERROR_UNKNOW						SCHEDULLER_BASE_ERROR | BASE_ERROR_UNKNOW
+#define	SCHEDULLER_ERROR_NULL_PARAM					SCHEDULLER_BASE_ERROR | BASE_ERROR_NULL_PARAM
+#define	SCHEDULLER_ERROR_EMPTY						SCHEDULLER_BASE_ERROR | BASE_ERROR_EMPTY
+#define SCHEDULLER_ERROR_PARAM_OUT_OF_RANGE			SCHEDULLER_BASE_ERROR| BASE_ERROR_PARAM_OUT_OF_RANGE
 
 uint_16 Scheduller_Init(void);
-uint_16 Scheduller_Coperative(uint_16 ActualTask);
-uint_16 Scheduller_SetTaskToReadyQueue(T_TCB_PTR );
+uint_16 Scheduller_Coperative(uint_16 ActualTaskSP);
+uint_16 Scheduller_SetTaskToReadyQueue(T_TCB_PTR Task);
+
+#endif

@@ -1,0 +1,7 @@
+{
+    "files.associations": {
+        "portable.h": "c",
+        "rtos.h": "c",
+        "apptypes.h": "c"
+    }
+}

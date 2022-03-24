@@ -1,11 +1,9 @@
 #ifndef __QUEUE_H__  // verifica si esta la variable definida (solo estara definida si ya paso por el archivo)
-
 #define __QUEUE_H__  // Solo lo compila una vez
 #define QUEUE_OK                0
 #define QUEUE_BASE_ERR          0x0500
 #define QUEUE_ERR_NULL          QUEUE_BASE_ERR|0x00FF
 #define QUEUE_ERR_OUT_OF_RANGE  0x0600
-
 #include "AppTypes.h"
 
 typedef struct Queue_element{
