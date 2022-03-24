@@ -1,5 +1,6 @@
 #include "Queue.h"
 #include "AppTypes.h"
+
 uint_16 Queue_Init(T_QUEUE_HANDLER_PTR Queue){
     uint_16 Res=QUEUE_ERR_NULL;
     if(Queue){

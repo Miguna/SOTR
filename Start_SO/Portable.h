@@ -6,7 +6,7 @@
  * 
  */
 #include "AppTypes.h"
-#include "scheduller.h"
+#include "Scheduller.h"
 /*
  * 
  * Definicion de constantes del modulo
@@ -38,13 +38,13 @@ typedef	void (*TaskFunction)(void * Param);
  */
 
 puint_8 Portable_InitTaskContext(puint_8 Stack, TaskFunction Function, pvi Param);
-/*void Portable:RestoreManualContext();//65465465465
+void Portable:RestoreManualContext();
 vi Portable_InitTickRTC(vi);
 vi Portable_DisableInterrupts(vi);
 vi Portable_EnableInterrupts(vi);
-__interrupt void ISR_SoftwareInterrupt(void);
-__interrupt void ISR_TimerInterrupt(void);
+__interrupt void ISR_SoftwareInterrupt(vi);
+__interrupt void ISR_TimerInterrupt(vi);
 
 uint_16	Scheduller_Coperative(uint_16 ActualTaskSP);
-*/
+
 #endif
