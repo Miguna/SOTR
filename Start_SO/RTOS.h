@@ -26,6 +26,6 @@
 
 uint_16 RTOS_Init(vi);
 uint_16 RTOS_Start(vi);
-T_QUEUE_HANDLER ReadyTaskList[RTOS_SYSTEM_PRIORITIES];
+//T_QUEUE_HANDLER ReadyTaskList[RTOS_SYSTEM_PRIORITIES];
 
 #endif

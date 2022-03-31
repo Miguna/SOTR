@@ -13,8 +13,10 @@ uint_16 Queue_Init(T_QUEUE_HANDLER_PTR Queue){
 }
 
 uint_16 Queue_GetCount(T_QUEUE_HANDLER_PTR Queue){
-    if(Queue){return Queue->count;}
-    return(0);
+    if(Queue){
+    	return Queue->count;
+    }
+    return 0;
 }
 uint_16 Queue_Enqueue(T_QUEUE_HANDLER_PTR Queue, T_QUEUE_ELEMENT_PTR Element){
     uint_16 Res=QUEUE_ERR_NULL;
@@ -50,6 +52,7 @@ uint_16 Queue_Dequeue(T_QUEUE_HANDLER_PTR Queue, T_QUEUE_ELEMENT_PTR * Element){
             }
             Res=QUEUE_OK;
         }
+    }
+    return Res;
 }
-
 //siempre hay que verificar si el apuntador no es nulo, si se trabaja con apuntadores

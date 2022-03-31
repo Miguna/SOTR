@@ -1,5 +1,6 @@
 #include "AppTypes.h"
 #include "Portable.h"
+#include "IO_Map.h"
 
 /*
  * 
@@ -11,7 +12,7 @@ extern 	uint_16 RTOS_Scheduller(uint_16 ActualStack);
 /*extern	v	RTOS_DecrementTimers(vi);*/
 
 
-uint_16 CurrentStackPtr;//ac� se almacena HX
+uint_16 CurrentStackPtr;// asi se almacena HX
 uint_8  CriticalNesting = 0;
 
 
@@ -54,11 +55,10 @@ vi Portable_RestoreManualContext(uint_16 Stack){
 }
 
 vi Portable_InitTickRTC(vi){
-	
-	RTCSC = 0x00;
-	RTCMOD = 0x01;
-	RTCMOD = RTCMOD;
-	RTCSC = 0x98;
+	RTC_SC2 = 0x00;
+	RTC_MOD = 0x01;
+	RTC_MOD = RTC_MOD;
+	RTC_SC2 = 0x98;
 }
 
 vi Portable_DisableInterrupts(vi){
@@ -98,8 +98,7 @@ __interrupt void ISR_SoftwareInterrupt(void){
 }
 
 __interrupt void ISR_TimerInterrupt(void){
-	
-	RTCSC |=0x80;								//quitar bandera de interrupcion del timer
+	RTC_SC2 |=0x80;								//quitar bandera de interrupcion del timer
 	CriticalNesting ++;
 	asm{										//guarda el contexto
 		LDA		CriticalNesting
@@ -115,5 +114,4 @@ __interrupt void ISR_TimerInterrupt(void){
 		PULA
 		STA		CriticalNesting
 	}
-	
 }

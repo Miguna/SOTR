@@ -7,6 +7,7 @@
  */
 #include "AppTypes.h"
 #include "Scheduller.h"
+#include "Task.h"
 /*
  * 
  * Definicion de constantes del modulo
@@ -30,7 +31,9 @@
  * Deficion de tipos de datos del modulo
  * 
  */
-typedef	void (*TaskFunction)(void * Param);
+
+
+
 /*
  * 
  * Deficion de funciones del modulo.
@@ -38,7 +41,7 @@ typedef	void (*TaskFunction)(void * Param);
  */
 
 puint_8 Portable_InitTaskContext(puint_8 Stack, TaskFunction Function, pvi Param);
-void Portable:RestoreManualContext();
+void Portable_RestoreManualContext();
 vi Portable_InitTickRTC(vi);
 vi Portable_DisableInterrupts(vi);
 vi Portable_EnableInterrupts(vi);

@@ -7,7 +7,7 @@ T_TCB   	IdleTaskHandler;
 uint_8		IdleTaskStack[RTOS_IDLE_TASK_STACK_SIZE];
 
 vi IdleTask(pvi Param){for(;;){}}
-uint_16 RTOS_Init(vi){return Scheduller_init();}
+uint_16 RTOS_Init(vi){return Scheduller_Init();}
 uint_16 RTOS_Start(vi){
 	uint_16	Res;
 	uint_16	FirstTaskSP;
@@ -20,9 +20,4 @@ uint_16 RTOS_Start(vi){
 	Portable_InitTickRTC();
 	Portable_RestoreManualContext(FirstTaskSP);
 	return Res;	
-}
-
-vi IdleTask(pvi Param)
-{
-	for(;;){}
 }
