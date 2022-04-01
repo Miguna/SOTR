@@ -2,8 +2,8 @@
 #include "AppTypes.h"
 
 uint_16 Queue_Init(T_QUEUE_HANDLER_PTR Queue){
-    uint_16 Res=QUEUE_ERR_NULL;
-    if(Queue){
+    uint_16 Res=QUEUE_ERR_NULL; // Inicia en error para que cuando entre al if, quede ok.
+    if(Queue){// Si Queue esta apuntado a nulo no entra al if. 
         Queue->count=0;
         Queue->Head=NULL;
         Queue->Tail=NULL;

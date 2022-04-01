@@ -20,18 +20,19 @@ typedef enum{
 }TaskStatus, * TaskStatus_PTR;
 
 typedef struct{
-    uint_16         Id;
-    pint_8          TaskName;
-    TaskStatus      Status;
-    uint_8          TaskPriority;
-    pvi             TaskParam;
-    TaskFunction    TaskCallback; //No he denifido el tipo apuntador de funcion TaskFunction
-    T_QUEUE_ELEMENT TaskQueueElement;
-    pint_8          TaskStack;  //
-    uint_16         TaskStackSize;
-    uint_16         TaskActualStack; //ver que posicion quedo el stack pointer en la ejecucion de la tarea
+    uint_16         Id;         		//**
+    pint_8          TaskName;    		//**
+    TaskStatus      Status;   
+    uint_8          TaskPriority;		//**
+    pvi             TaskParam;			//**
+    TaskFunction    TaskCallback; 		//**
+    T_QUEUE_ELEMENT TaskQueueElement;	
+    pint_8          TaskStack;  		//**
+    uint_16         TaskStackSize;		//**
+    uint_16         TaskActualStack; 
     uint_16         TaskSleepTime;
     uint_16         TaskActualTask;
+    //** --> Parametros dados en la inicializacion de la tarea por el usuario.
 }T_TCB, * T_TCB_PTR;
 /*
  * 
@@ -40,7 +41,7 @@ typedef struct{
  */
 T_TCB_PTR Task_GetActualTask(vi);
 vi Task_SetActualTask(T_TCB_PTR Task);
-uint_16 Task_Create(T_TCB_PTR TaskHandler, uint_16 Id, char * Name, uint_8 Priority, puint_8 Stack, uint_16 StackSize, TaskFunction Function, void * Param );
+uint_16 Task_Create(T_TCB_PTR TaskHandler, uint_16 Id, pint_8 Name, uint_8 Priority, pint_8 Stack, uint_16 StackSize, TaskFunction Function, void * Param );
 
 
 

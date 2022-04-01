@@ -13,7 +13,7 @@ extern 	uint_16 RTOS_Scheduller(uint_16 ActualStack);
 
 
 uint_16 CurrentStackPtr;// asi se almacena HX
-uint_8  CriticalNesting = 0;
+int_8  CriticalNesting = 0;
 
 
 puint_8 Portable_InitTaskContext (puint_8 Stack, TaskFunction Function, pvi Param) 
@@ -42,7 +42,12 @@ puint_8 Portable_InitTaskContext (puint_8 Stack, TaskFunction Function, pvi Para
  
 
 vi Portable_RestoreManualContext(uint_16 Stack){
-	
+	//Load index register (H:X) from memory 	// H:X <- (M:M + 0x0001)
+	//Transfer Index Register to SP			    // SP <- (H:X) – 0x0001
+	//Pull Accumulator from Stack				// SP <- (SP + 0x0001); Pull (A)
+	//Store Accumulator in Memory				// M  <- (A)
+	//Pull H (Index Register High) from Stack	// SP <- (SP + 0x0001); Pull (H)
+	//Return from Interrupt
 	CurrentStackPtr = Stack;
 	asm{
 		LDHX	CurrentStackPtr
@@ -52,6 +57,7 @@ vi Portable_RestoreManualContext(uint_16 Stack){
 		PULH
 		RTI
 	}
+	return ;
 }
 
 vi Portable_InitTickRTC(vi){
@@ -59,6 +65,7 @@ vi Portable_InitTickRTC(vi){
 	RTC_MOD = 0x01;
 	RTC_MOD = RTC_MOD;
 	RTC_SC2 = 0x98;
+	return ;
 }
 
 vi Portable_DisableInterrupts(vi){
